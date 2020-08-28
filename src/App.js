@@ -33,16 +33,24 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>Day: {toDay(currentDate.value)} Month: {toMonth(currentDate.value)}</p>
-        <p>Today's holiday: {holidays[toMonth(currentDate.value)].days[toDay(currentDate.value)]}</p>
-        <p>{new Date(currentDate.value).toISOString()}</p>
-        <button onClick={onNextDayClicked}>next</button>
-        <button onClick={onPrevDayClicked}>prev</button>
-        <button onClick={onTodayClicked}>today</button>
-      </header>
-    </div>
+    <>
+      <div className="Page">
+        <h1 className="Header">Jakie dzisiaj święto?</h1>
+        <div className="Container">
+          <div onClick={onPrevDayClicked}><img src="arrow.svg" alt="Previous day" className="LeftArrow"></img></div>
+          <div>
+            <div>
+              <p>Day: {toDay(currentDate.value)} Month: {toMonth(currentDate.value)}</p>
+              <p>{holidays[toMonth(currentDate.value)][toDay(currentDate.value)]}</p>
+            </div>
+            <div>
+              <button onClick={onTodayClicked}>today</button>
+            </div>
+          </div>
+          <div onClick={onNextDayClicked}><img src="arrow.svg" alt="Previous day" className="RightArrow"></img></div>
+        </div>
+      </div>
+    </>
   );
 }
 
